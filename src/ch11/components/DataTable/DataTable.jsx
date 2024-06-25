@@ -11,6 +11,7 @@ function DataTable() {
     const [ products, setProducts ] = useState([ ...SAMPLE_PRODUCTS ]);
     // const [ viewProducts, setViewProducts ] = useState([]);
     const [ isDeleting, setDeleting] = useState(false);
+    const [ editProductId, setEditProductId ] = useState(0);
 
 
     useEffect(() => {
@@ -25,8 +26,23 @@ function DataTable() {
 
     return ( 
         <div className="table-main-container">
-            <DataTableHeader  mode={mode} setMode={setMode} setProducts={setProducts} setDeleting={setDeleting} />
-            <DataTableBody mode={mode} setMode={setMode} products={products} setProducts={setProducts} isDeleting={isDeleting} setDeleting={setDeleting} />
+            <DataTableHeader  
+                mode={mode} 
+                setMode={setMode} 
+                products={products} 
+                setProducts={setProducts} 
+                setDeleting={setDeleting} 
+                editProductId={editProductId}
+            />
+            <DataTableBody 
+                mode={mode} 
+                setMode={setMode} 
+                products={products} 
+                setProducts={setProducts} 
+                isDeleting={isDeleting} 
+                setDeleting={setDeleting}
+                setEditProductId={setEditProductId}
+            />
         </div>
      );
 }
