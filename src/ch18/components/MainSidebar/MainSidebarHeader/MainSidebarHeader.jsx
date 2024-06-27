@@ -1,9 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import { FaBars, FaBook, FaHome } from 'react-icons/fa';
+import { useRecoilState } from 'recoil';
 import MainContainer from '../../MainContainer/MainContainer';
 import * as s from "./style";
+import { FaBars, FaBook, FaHome } from 'react-icons/fa';
+import { mainSidebarShowAtom } from '../../../atoms/mainSidebarShowAtom';
 
-function MainSidebarHeader({ setMainSidebarShow }) {
+function MainSidebarHeader() {
+    const [ mainSidebarShow, setMainSidebarShow ] = useRecoilState(mainSidebarShowAtom);
+
     const handleMainMenuToggleClick = () => {
         setMainSidebarShow(false);
     }
@@ -16,7 +20,7 @@ function MainSidebarHeader({ setMainSidebarShow }) {
                         <FaBook />
                         <span>수업자료</span>
                     </h1>
-                    <button
+                    <button 
                         css={s.menuToggleButton}
                         onClick={handleMainMenuToggleClick}
                         >
